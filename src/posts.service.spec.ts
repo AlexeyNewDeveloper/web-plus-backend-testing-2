@@ -31,7 +31,7 @@ describe('PostsService', () => {
       expect(postsService.findMany({ skip: 1, limit: 1 })).toContainEqual(expect.objectContaining(posts[1]))
     });
 
-    it('should return correct posts for skip and limit options', () => {
+    it('should return correct posts for limit options', () => {
       expect(postsService.findMany({ limit: 1 })).toContainEqual(expect.objectContaining(posts[0]))
     });
 
