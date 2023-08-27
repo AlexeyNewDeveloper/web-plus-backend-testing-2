@@ -28,7 +28,13 @@ describe('PostsService', () => {
     });
 
     it('should return correct posts for skip and limit options', () => {
-      expect(postsService.findMany({ limit: 1, skip: 1 })).toContainEqual(expect.objectContaining(posts[1]))
+      const allPosts = postsService.findMany({ limit: 2, skip: 1 });
+      const expectedPosts = allPosts.map(item => {
+        return { text: item.text }
+      })
+
+      // expect(postsService.findMany({ limit: 1, skip: 1 })).toContainEqual(expect.objectContaining(posts[1]))
+      expect(expectedPosts).toEqual([posts[1], posts[2]])
     });
 
     it('should return correct posts for limit options', () => {
